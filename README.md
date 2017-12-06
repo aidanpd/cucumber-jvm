@@ -1,4 +1,4 @@
-BDD with Cucumber JVM
+#BDD with Cucumber JVM
 
 Behaviour Driven Development example using Cucumber JVM integrated with Gradle.
 
@@ -8,7 +8,10 @@ simplified banking API with operations to create and update accounts.
 
 See `account-service.feature` for the example Scenarios tested.
 
+### Build
 
-REFERENCES
+>gradle clean test
+
+### References
 
 See [Dan North's explanation of BDD](https://dannorth.net/introducing-bdd/) 
