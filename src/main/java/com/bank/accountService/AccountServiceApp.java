@@ -1,4 +1,4 @@
-package example.accountService;
+package com.bank.accountService;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;

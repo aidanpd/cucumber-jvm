@@ -1,4 +1,4 @@
-package example.accountService;
+package com.bank.accountService;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

@@ -1,4 +1,4 @@
-package example.accountService;
+package com.bank.accountService;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.with;
