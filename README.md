@@ -1,4 +1,4 @@
-#BDD with Cucumber JVM
+# BDD with Cucumber JVM
 
 Behaviour Driven Development example using Cucumber JVM integrated with Gradle.
 
