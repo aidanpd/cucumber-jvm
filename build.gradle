@@ -45,14 +45,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-task cucumber() {
-    dependsOn assemble, compileTestJava
-    doLast {
-        javaexec {
-            main = "cucumber.api.cli.Main"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--glue', 'example.accountService', 'src/test/resources']
-        }
-    }
+test {
+    // exclude step definitions from test suite as these are run via Cucumber
+    exclude '**/*StepDefs.class'
 }
 

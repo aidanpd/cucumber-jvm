@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = {"pretty"}, features = "src/test/resources")
-public class AccountServiceDeveloperTests {
+public class AccountServiceTests {
+
 
 }
