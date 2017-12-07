@@ -18,11 +18,9 @@ import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@Profile("dev")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
     loader = SpringBootContextLoader.class,
@@ -32,7 +30,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AccountServiceStepDefs {
 
   @LocalServerPort
-  int port;
+  private int port;
 
   @Before
   public void setup() {
@@ -42,7 +40,7 @@ public class AccountServiceStepDefs {
   private Response res;
 
   @Given("^An account (\\d+) with a balance of (\\d+)$")
-  public void account_with_balance(long accNum, BigDecimal bal) throws Exception {
+  public void account_with_balance(long accNum, BigDecimal bal) {
 
     RestAssured.config = RestAssured.config()
         .jsonConfig(jsonConfig().numberReturnType(NumberReturnType.BIG_DECIMAL));
@@ -50,12 +48,12 @@ public class AccountServiceStepDefs {
     with()
         .body(bal.intValue())
         .when()
-        .post("/api/account/1234")
+        .post("/api/account/" + accNum)
         .then().body("bal", equalTo(200));
   }
 
   @When("^I withdraw (\\d+) from account (\\d+)$")
-  public void withdrawal_from_account(BigDecimal withdrawal, long accNum) throws Exception {
+  public void withdrawal_from_account(BigDecimal withdrawal, long accNum) {
 
     res = with()
         .body(withdrawal)
@@ -64,7 +62,7 @@ public class AccountServiceStepDefs {
   }
 
   @Then("^Account (\\d+) has balance (\\d+)$")
-  public void account_has_balance(long accNum, BigDecimal bal) throws Exception {
+  public void account_has_balance(long accNum, BigDecimal bal) {
 
     res = get("/api/account/" + accNum);
     res.then()
@@ -72,7 +70,7 @@ public class AccountServiceStepDefs {
   }
 
   @Then("^A (\\d+) status is returned")
-  public void status_is_returned(int expectedStatus) throws Exception {
+  public void status_is_returned(int expectedStatus) {
 
     res.then().statusCode(expectedStatus);
   }
