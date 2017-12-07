@@ -9,7 +9,7 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
-group 'test.sample.complete'
+group 'com.bank'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
@@ -31,18 +31,16 @@ configurations {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.11'
-    compile('org.springframework.boot:spring-boot-starter-web')
+    compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'io.rest-assured:json-path:3.0.6'
 
-    runtime('org.springframework.boot:spring-boot-devtools')
-    compile('org.springframework.boot:spring-boot-starter-test')
-
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'info.cukes:cucumber-java:1.2.4'
     testCompile 'info.cukes:cucumber-junit:1.2.4'
     testCompile 'info.cukes:cucumber-spring:1.2.4'
     testCompile 'io.rest-assured:rest-assured:3.0.6'
 
-    testCompile 'junit:junit:4.12'
+    runtime 'org.springframework.boot:spring-boot-devtools'
 }
 
 test {
