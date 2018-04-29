@@ -4,6 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+		echo BRANCH_NAME
+		echo COMMIT_ID
                 echo 'Building..'
             }
         }
